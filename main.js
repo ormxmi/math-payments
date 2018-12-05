@@ -109,7 +109,7 @@ function radioBtn(id){
         radioButtons[selectedRadio].setAttribute("class","radio-button");
         selectedRadio = id;
     }
-    calcProfit();
+    calcProfit1();
 }
 window.onresize = function(){
     resizeButtons();

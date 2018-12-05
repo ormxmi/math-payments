@@ -1,0 +1,297 @@
+@font-face {
+    font-family: Nokia;
+    src: url(fonts/nokiafc22.ttf);
+}
+@font-face {
+    font-family: Windows;
+    src: url(fonts/px_sans_nouveaux.ttf);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+   overflow: hidden;
+    font-family: 'Nokia',sans-serif;
+    cursor: url(https://dwvo2npct47gg.cloudfront.net/images/awge-auto-small.png), auto;
+}
+.container{
+    height: 100%;
+    width: 200%;
+    background: linear-gradient(to right, #000428, #004e92) no-repeat;
+    transition: 1s ease-in-out;
+}
+.taskbar{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    z-index: 7780;
+}
+.main{
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    transform: scale(1);
+    
+    height: 500px;
+    width: 100%;
+    max-width: 650px;
+    background-color: 	#D3D3D3;
+    border-radius: 1px;
+}
+.windows-borders{
+    border: 2px solid;
+    border-bottom-color: #535353;
+    border-right-color: #535353;
+    border-left-color: #dbdbdb;
+    border-top-color: #dbdbdb;
+    background-color: #bfbfbf;
+}
+.main-header{
+    position: relative;
+    width: 99.5%;
+    color: #BFBFBF;
+    background-color: rgb(1, 0, 129);
+    padding-left: 4px; 
+    margin: 2px auto;
+    user-select: none;
+}
+.main-header-draggable{
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 89%;
+}
+.main-header-buttons-container{
+    float: right;
+    margin-right: 3px;
+}
+.main-header-buttons{
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    font-size: 12px;
+    color: black;
+    text-align: center;
+    z-index: 999990;
+}
+.main-header-buttons:nth-child(2){
+    transform: translateY(2px);
+}
+.main-header-buttons:nth-child(2)>div{
+    border: 2px solid black;
+    width: 13px !important;
+    height: 13px;
+}
+label,input{
+    font-family: 'Windows',sans-serif;
+}
+.underline{
+    text-decoration: underline;
+}
+.input-capital-div{
+
+    margin-top: 50px;
+    margin-left: 150px;
+}
+.input-capital-input{
+    outline: 0;
+    border: 1px solid black;
+    border-bottom: 0px;
+    border-right: 0px; 
+    height: inherit;
+    padding-left: 3px; 
+    
+}
+.input-capital-label::after{
+    content: 'leva';
+    font-size: 14px;
+    position: absolute;;;
+    right: 0;
+    transform: translate(-60px, 4px); 
+}
+.input-capital-input-borders{
+    position: relative;
+    border: 1px solid;
+    border-bottom-color: #dbdbdb;
+    border-right-color: #dbdbdb;
+    border-left-color: #535353;
+    border-top-color: #535353;
+    display: inline-block;
+    
+}
+.input-capital-input-borders p{
+    height: 100%;
+    font-size: 14px;
+    padding: 0px 4px;
+    display: block;
+}
+.p-borders{
+    height: 100%;
+    position: absolute;
+    top:1px;
+    right: 0;
+    outline: 0;
+    border: 1px solid black;
+    border-top: 0px;
+    border-left: 0px; 
+    display: inline-block; 
+}
+
+.interest-rate-div{
+    margin-top: 20px;
+    margin-left: 150px;
+}
+.interest-rate-input{
+    outline: 0;
+    border: 1px solid black;
+    border-bottom: 0px;
+    border-right: 0px; 
+    height: inherit;
+    padding-left: 3px; 
+    width: 40px;
+    display: inline-block;
+}
+.interest-rate-input-borders{
+    margin-left: 8px;
+}
+.interest-rate-input-borders::after{
+    content: '%';
+    font-family: sans-serif;
+    position: absolute;
+    top: 2px;;
+    font-size: 20px;
+    left: 110%;
+}
+.time-periods-div{
+    margin-top: 20px;
+    margin-left: 50px;
+}
+.time-periods-input{
+    outline: 0;
+    border: 1px solid black;
+    border-bottom: 0px;
+    border-right: 0px; 
+    height: inherit;
+    padding-left: 3px; 
+    width: 40px;
+    display: inline-block;
+}
+.time-periods-input-borders{
+    margin-left: 8px;
+}
+.taskbar-images{
+    position: absolute;
+    bottom: 0;
+    left: 27%;
+    z-index: 7781;
+}
+.taskbar-image{
+    
+    display: inline-block;
+    background-color: #C1C1C1 !important;
+    width: 70px;
+    text-align: center;
+    padding: 3px 15px;
+    color: rgb(1, 0, 129);
+    font-size: 2vw;
+}
+.radio-buttons{
+    margin-top:20px;; 
+    display: block;
+    width: 70px;
+}
+.radio-button{
+    position: relative;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background-color: white;
+    border-radius: 50%;
+    border: 3px solid gray;
+    font-family: 'Windows',sans-serif;
+    margin-left:320px; 
+    margin-top:20px;; 
+}
+.selected{
+    background-color: black;
+    
+}
+.radio-button-p{
+    position: absolute;
+    left: 30px;
+    top: -10px;
+    user-select: none;
+}
+.radio-buttons-label{
+    font-family: 'Windows',sans-serif;
+    position: absolute;
+    top: 235px;
+    left: 215px;
+}
+.time-periods-main-2{
+    margin-left: 83px;
+}
+.main-2-lihva{
+    font-family: 'Windows',sans-serif;
+    margin-top: 40px;
+    margin-left: 240px;;
+    border: 2px solid black;
+    padding: 5px;
+    max-width: 170px;
+}
+
+.output-div{
+width: 160px;
+text-align: center;
+margin-left: 250px;
+margin-top: 25px;
+}
+.output-div-2{
+    margin-left: 100px;
+    
+}
+.razmer-2{
+    margin-left: 165px;
+}
+.output-div-2>label{
+   
+    white-space: nowrap;
+}
+.output-div>label{
+    font-size: 25px;
+}
+
+#main-1{
+    left: 60%;
+    
+}
+.output-input{
+    position: relative;
+    font-size: 25px;
+    width: 125px;
+    cursor: not-allowed;
+}
+.output-input-after{
+    font-size: 25px;
+    font-family: 'Windows', sans-serif;
+    position: absolute;
+    top: 380px;
+    left: 410px;
+}
+.output-input-after-2{
+    top: 363px;
+    left: 405px;
+}
+@media (max-width: 450px){
+    #header-left{
+        top: 60%;
+        font-size: 50px;
+    }
+}

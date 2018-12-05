@@ -4,6 +4,7 @@ var iconsTaskbar = document.getElementsByClassName("taskbar-image");
 var lastTop;var lastLeft;var i0 =0,i1 = 0;var migasht0;
 var migasht; var selectedRadio = 0;var zIndexMain = 3;
 var closed0 = true, closed1 = true;
+var main1X,main1Y,main2X,main2Y;
 window.onload = function(){
     resizeButtons();
     capitalInput.value = null;interestRateInput.value = null;timePeriodsInput.value = null;
@@ -30,12 +31,12 @@ window.onload = function(){
 
         document.getElementsByClassName("main-header-buttons-container")[k].children[0].onclick = function(){
             var mainWindow = this.parentElement.parentElement.parentElement;
-            mainWindow.style.transition = "0.1s";
-            mainWindow.style.transitionTimingFunction = "steps(4, end)";
-            mainWindow.style.top = (window.innerHeight-40).toString() + "px";;
-            mainWindow.style.left = (window.innerWidth*10/100).toString() + "px";;
-            mainWindow.style.transform = "scale(0)";
             if(this.parentElement.parentElement.parentElement.getAttribute("id").charAt(5)==0){
+                var rect = this.getBoundingClientRect();
+                console.log(rect);
+                main1X = rect.x;
+                main1Y = rect.y;
+                console.log(main1X,main1Y);
                 migasht0 = setInterval(()=>{
                     
                     i0++;
@@ -48,6 +49,9 @@ window.onload = function(){
                 },1000)
             }
             else if(this.parentElement.parentElement.parentElement.getAttribute("id").charAt(5)==1){
+                var rect = this.getBoundingClientRect();
+                main2X = rect.x;
+                main2Y = rect.y;
                 migasht1 = setInterval(()=>{
                     
                     i1++;
@@ -59,6 +63,12 @@ window.onload = function(){
                     }
                 },1000)
             }
+            mainWindow.style.transition = "0.1s";
+            mainWindow.style.transitionTimingFunction = "steps(4, end)";
+            mainWindow.style.top = (window.innerHeight-40).toString() + "px";;
+            mainWindow.style.left = (window.innerWidth*10/100).toString() + "px";;
+            mainWindow.style.transform = "scale(0)";
+            
         }
         
         document.getElementsByClassName("taskbar-image")[k].addEventListener("click",function(){
@@ -66,14 +76,14 @@ window.onload = function(){
             if(idIcon==0){
                 if(closed0==true){
                     var iconExpandParent = document.getElementById("main-"+idIcon.toString());
-                    expandTaskbarIcon(iconExpandParent);
+                    expandTaskbarIcon(iconExpandParent,1);
                     clearInterval(migasht0);
                 }
             }
             if(idIcon==1){
                 if(closed1==true){
                     var iconExpandParent = document.getElementById("main-"+idIcon.toString());
-                    expandTaskbarIcon(iconExpandParent);
+                    expandTaskbarIcon(iconExpandParent,2);
                     clearInterval(migasht1);
                 }
             }
@@ -93,9 +103,16 @@ function resizeButtons(){
     iconsTaskbar[1].style.lineHeight = (maxHeight-5).toString()+"px";
 }
 
-function expandTaskbarIcon(toExpn){
-    toExpn.style.top = (window.innerHeight/5).toString() + "px";;
-    toExpn.style.left = (window.innerWidth/5).toString() + "px";;
+function expandTaskbarIcon(toExpn,id){
+    if(id == 1){
+    var topOffset = main1Y;
+    var leftOffset = main1X;
+    }else{
+    var topOffset = main2Y;
+    var leftOffset = main2X;   
+    }
+    toExpn.style.top = (topOffset-6).toString() + "px";;
+    toExpn.style.left = (leftOffset-578).toString() + "px";;
     toExpn.style.transform = "scale(1)";
     setTimeout(()=>{
         toExpn.style.transition = "0s";
@@ -109,7 +126,7 @@ function radioBtn(id){
         radioButtons[selectedRadio].setAttribute("class","radio-button");
         selectedRadio = id;
     }
-    calcProfit1();
+    calcProfit();
 }
 window.onresize = function(){
     resizeButtons();
@@ -166,17 +183,10 @@ function calcProfit2(){
         var totalPaid = 0;
         var payment = 0;
         for(var c = 1;c<=timePeriodsInput2.value;c++){
-            console.log("-------")
-            console.log("capital:",capital)
             capital += capital/100*Number(interestRateInput2.value);
-            console.log("capital + lihva:",capital);
-            
             payment = capital/Number((timePeriodsInput2.value)-c+1);
-            console.log("vnoska:",payment);
             capital = capital - payment;
-            console.log("capital - 1 vnoska:",capital);
             totalPaid += payment;
-            console.log("totalPaid",totalPaid);
         }
         sizePayment.value = Math.round(totalPaid/timePeriodsInput2.value * 100) / 100;
 
